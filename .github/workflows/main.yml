@@ -9,14 +9,14 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       - name: checkout
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: zip
-      - uses: papeloto/action-zip@v1
+        uses: papeloto/action-zip@v1
         with:
           files: jlink/
           dest: jlink.zip
       - name: release
-      - uses: actions/create-release@v1
+        uses: actions/create-release@v1
         id: create_release
         with:
           draft: false
@@ -27,7 +27,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: upload artifact
-      - uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
