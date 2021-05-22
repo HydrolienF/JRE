@@ -22,7 +22,7 @@ jobs:
             files: jlink/
             dest: jlink.zip
         - name: release
-          uses: actions/create-release@v1
+        - uses: actions/create-release@v1
           id: create_release
           with:
             draft: false
@@ -33,7 +33,7 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ github.token }}
         - name: upload artifact
-          uses: actions/upload-release-asset@v1
+        - uses: actions/upload-release-asset@v1
           env:
             GITHUB_TOKEN: ${{ github.token }}
           with:
