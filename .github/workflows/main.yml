@@ -8,8 +8,9 @@ jobs:
   zip-files & publish:
       runs-on: ubuntu-latest
       steps:
-      - name: zip
+      - name: checkout
       - uses: actions/checkout@v2
+      - name: zip
       - uses: papeloto/action-zip@v1
         with:
           files: jlink/
