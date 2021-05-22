@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  zip-files & publish:
+  zip-files_and_publish:
       runs-on: ubuntu-latest
       steps:
       - name: checkout
