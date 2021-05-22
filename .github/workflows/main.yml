@@ -1,0 +1,43 @@
+# This is a basic workflow to help you get started with Actions
+
+name: publish with artifact
+
+# Controls when the action will run. 
+on:
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  zip-files & publish:
+      runs-on: ubuntu-latest
+      steps:
+        - name: zip
+        - uses: actions/checkout@v2
+        - uses: papeloto/action-zip@v1
+          with:
+            files: jlink/
+            dest: jlink.zip
+        - name: release
+          uses: actions/create-release@v1
+          id: create_release
+          with:
+            draft: false
+            prerelease: false
+            release_name: JRE$(cat version.md)
+            tag_name: $(cat version.md)
+            body_path: CHANGELOG.md
+          env:
+            GITHUB_TOKEN: ${{ github.token }}
+        - name: upload artifact
+          uses: actions/upload-release-asset@v1
+          env:
+            GITHUB_TOKEN: ${{ github.token }}
+          with:
+            upload_url: ${{ steps.create_release.outputs.upload_url }}
+            asset_path: jlink.zip
+            asset_name: jlink.zip
+            asset_content_type: application/zip
