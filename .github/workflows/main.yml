@@ -19,7 +19,7 @@ jobs:
       - name: run
         run: ./run.sh
       - name: zip
-        run: zip -r jlink.zip jlink/*
+        run: cd jlink/;zip -r ../jlink.zip *;cd ..
       - name: version
         run: echo "::set-output name=version::$(cat version.md)"
         id: version
