@@ -5,3 +5,4 @@ jlink --module-path "jmods/mac" --add-modules "java.desktop,java.base,jdk.crypto
 jlink --module-path "jmods/windows" --add-modules "java.desktop,java.base,jdk.crypto.ec" --output "jlink/jWindows"
 chmod 700 jlink/jLinux/bin/java
 chmod 700 jlink/jMac/bin/java
+ls -la jlink/jLinux/bin/
