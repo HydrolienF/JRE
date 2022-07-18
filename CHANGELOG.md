@@ -1,1 +1,1 @@
-new java version
+Set permission for java
