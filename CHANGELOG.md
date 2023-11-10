@@ -1,1 +1,1 @@
-Add module jdk.unsupported for libgdx
+Update to java 21
